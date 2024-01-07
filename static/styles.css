@@ -1,0 +1,61 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+#upload-form {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#file-input {
+    display: block;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+#upload-button {
+    display: block;
+    margin: 0 auto;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+#upload-button:hover {
+    background-color: #0056b3;
+}
+
+#image-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#uploaded-image {
+    max-width: 400px;
+    max-height: 400px;
+}
+
+#prediction-result {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#prediction-result h2 {
+    color: #333;
+    font-size: 24px;
+}
+
+#prediction-result p {
+    color: #555;
+    font-size: 18px;
+}

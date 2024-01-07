@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Upload and Prediction</title>
+    <link rel="stylesheet" href="\static\styles.css">
+</head>
+
+<body>
+    <h1>Upload an Image</h1>
+    <form id="upload-form" enctype="multipart/form-data">
+        <input type="file" name="file" id="file-input">
+        <input type="button" value="Upload" id="upload-button">
+    </form>
+    
+    <div id="image-container">
+        <img id="uploaded-image" style="max-width: 400px; max-height: 400px;">
+    </div>
+
+    <div id="prediction-result">
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#upload-button").on("click", function() {
+                var formData = new FormData();
+                formData.append("file", $("#file-input")[0].files[0]);
+
+                $.ajax({
+                    type: "POST",
+                    url: "/upload",
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function(response) {
+                        var uploadedImage = $("#uploaded-image");
+                        uploadedImage.attr("src", response.image_path);
+                        var predictionResult = $("#prediction-result");
+                        predictionResult.append('<h2>Predicted Class: ' + response.data[0].predicted_class + '</h2>');
+                        predictionResult.append('<h2>Max Confidence: ' + response.data[0].max_confidence + '%</h2>');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
